@@ -25,6 +25,18 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
 
+    haml: {
+      one: {
+        files: {
+          'app/views/main.html': 'app/views/main.haml',
+          'app/index.html': 'app/index.haml'
+        },
+        options: {
+          language: 'ruby'
+        }
+      },
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       coffee: {
@@ -41,6 +53,10 @@ module.exports = function (grunt) {
       },
       gruntfile: {
         files: ['Gruntfile.js']
+      },
+      haml: {
+        files: ['<%= yeoman.app %>/{,*/}*.haml'],
+        tasks: ['haml']
       },
       livereload: {
         options: {
@@ -379,6 +395,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'haml',
       'bower-install',
       'concurrent:server',
       'autoprefixer',
@@ -422,4 +439,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-haml');
 };
