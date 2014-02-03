@@ -1,5 +1,18 @@
 %div{'ng-controller' => 'PhoneListCtrl'}
-  %ul
-    %li{'ng-repeat' => 'phone in phones'}
-      {{phone.name}}
-      %p {{phone.snippet}}
+  .container-fluid
+    .row-fluid
+      .span2
+        Search:
+        %input{'ng-model' => 'query'}
+      .span2
+        Sort by:
+        %select{'ng-model' => 'orderProp'}
+          %option{'value' => 'name'}Alphabetical
+          %option{'value' => 'age'}Newest
+          %option{'value' => '-age'}Oldest
+      .span10
+        %title {{query}}
+        %ul.phones
+          %li{'ng-repeat' => 'phone in phones | filter:query | orderBy:orderProp'}
+            {{phone.name}}
+            %p {{phone.snippet}}

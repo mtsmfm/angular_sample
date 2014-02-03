@@ -7,14 +7,8 @@ angular.module('angularSampleApp')
       'AngularJS'
       'Karma'
     ]
-  .controller 'PhoneListCtrl', ($scope) ->
-    $scope.phones = [
-      name: 'Nexus S'
-      snippet: 'Fast just got faster with Nexus S.'
-    ,
-      name: 'Nexus S'
-      snippet: 'Fast just got faster with Nexus S.'
-    ,
-      name: 'Nexus S'
-      snippet: 'Fast just got faster with Nexus S.'
-    ]
+  .controller 'PhoneListCtrl', ($scope, $http) ->
+    $http.get('phones/phones.json').success (data) ->
+      $scope.phones = data
+
+    $scope.orderProp = 'age'
