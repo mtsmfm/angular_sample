@@ -16,3 +16,5 @@
           %li{'ng-repeat' => 'phone in phones | filter:query | orderBy:orderProp'}
             {{phone.name}}
             %p {{phone.snippet}}
+  %div
+    {{phones | json}}

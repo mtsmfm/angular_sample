@@ -1,9 +1,8 @@
 'use strict'
 
-###
 describe 'PhoneCat App', () ->
   describe 'Phone list view', () ->
-    beforeEach () ->
+    beforeEach ->
       browser().navigateTo '../../../app/views/main.html'
 
     it 'should filter the phone list as user types into the search box', () ->
